@@ -1,0 +1,45 @@
+plugins {
+    // Add a shadowJar task to build a fatJar: build/libs/HalfbeastyTracker.jar
+    id 'com.github.johnrengelman.shadow' version '4.0.4'
+    id 'java'
+    id 'application'
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+// Sets the Main-Class in the shadowJar manifest
+mainClassName = 'com.HalfbeastyTracker.Launcher'
+
+// Repositories
+
+
+// Dependencies
+allprojects {
+    repositories {
+        jcenter()
+        maven { url "https://oss.jfrog.org/artifactory/libs-release" }
+        maven { url "https://jitpack.io/" }
+    }
+}
+dependencies {
+    // Twitch4J
+    compile "com.github.twitch4j:twitch4j:1.0.0-alpha.18"
+
+    // Logging
+    compile "ch.qos.logback:logback-classic:1.1.8"
+    compile "com.jcabi:jcabi-log:0.17.2"
+
+    // https://mvnrepository.com/artifact/commons-io/commons-io
+    compile group: 'commons-io', name: 'commons-io', version: '2.6'
+    implementation "commons-io:commons-io:2.6"
+
+
+compile 'org.codehaus.janino:janino:3.0.6'
+
+
+//buildScan { termsOfServiceUrl = "https://gradle.com/terms-of-service"; termsOfServiceAgree = "yes" }
+
+
+
+}
